@@ -2,20 +2,49 @@ import Head from 'next/head'
 import Sidebar from '../components/sidebar'
 import Navbar from '../components/navbar'
 import VideoCard from '../components/videocard'
+import { sidebar } from '../lib/constant'
 import { useEffect, useState } from 'react'
-import {sidebar} from '../lib/constant'
-import { fetchFromAPI } from '../lib/youtubeclone'
+import Link from 'next/link'
+import { fetchSuggestedVideos, fetchSearch } from '../lib/youtubeclone'
 
 export default function Home( ) {
-  const [videos, setVideos] = useState([])
-  const [urls] = useState('relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=50')
+  const [getVideos, setGetVideos] = useState([])
+  const [getMenu, setGetMenu] = useState('')
+  const [qsearch, setQSearch] = useState('')
+  const [sidebarMenu, setSidebarMenu] = useState(sidebar)
 
   useEffect(()=>{
-    fetchFromAPI(urls)
-    .then(data=>setVideos(data.items))
-  },[urls])
+    fetchSuggestedVideos()
+    .then(data=>setGetVideos(data.items))
+  },[])
 
-  console.log(videos)
+  useEffect(()=>{
+    if(getMenu !== 'myhomepage'){
+      fetchSearch(getMenu)
+      .then(data=>setGetVideos(data.items))
+    } else {
+      fetchSuggestedVideos()
+      .then(data=>setGetVideos(data.items))
+    }
+  },[getMenu])
+  
+  const handleClickSidebarMenu = (id, menu) => {
+    setGetMenu(menu)
+    setSidebarMenu(prev=>{
+        return prev.map(data=>{
+            return data.id === id ? {...data, isFocus : data.isFocus? data.isFocus : !data.isFocus}  : {...data, isFocus : false}
+        })
+    })
+  }
+  
+  // const handleChangeSearch = (event) => {
+  //   setQSearch(event.target.value)
+  // }
+
+  // const handleClickSubmit = (event) => {
+  //   event.preventDefault();
+  // }
+
   return (
     <>
       <Head>
@@ -24,11 +53,19 @@ export default function Home( ) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/icon/yt-icon.png" />
       </Head>
-      <Navbar />
-      <Sidebar />
-      <main className=''>
-        <VideoCard videos={videos} />
-      </main>
+      <Navbar 
+      // handleChangeSearch={handleChangeSearch}
+      // handleClickSubmit={handleClickSubmit}
+      // qsearch={qsearch} 
+      />
+      <div className='md:flex md:mx-5'>
+        <Sidebar 
+        handleClickSidebarMenu={handleClickSidebarMenu}
+        sidebarMenu={sidebarMenu} />
+        <main className='md:border-l flex flex-col md:flex-none md:grid md:grid-cols-5 md:gap-2 md:max-w-[100rem] md:mx-auto px-2'>
+          <VideoCard videos={getVideos} />
+        </main>
+      </div>
     </>
   )
 }
