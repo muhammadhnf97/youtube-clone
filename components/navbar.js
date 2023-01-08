@@ -5,7 +5,7 @@ import {FaSearch} from "react-icons/fa"
 
 export default function Navbar (  ) {
     const [isSearchBar, setIsSearchBar] = useState(false)
-    const [qsearch, setQSearch] = useState('')
+    const [qsearch, setQSearch] = useState(null)
 
     const handleClickSearchBar = () => {
         setIsSearchBar(prev=>!prev)
@@ -29,18 +29,21 @@ export default function Navbar (  ) {
                 <Image src={'/images/icon/yt-icon.png'} alt="yt-icon" fill />
             </div>
             <input type={'text'} id={'search'} name={"search"} className="hidden md:block border w-[40rem] mx-5 h-8 rounded-md outline-none px-2 focus:border focus:border-blue-800" onChange={(event)=>handleChangeSearch(event)} />
-            <Link href={`/search/${qsearch}`}>
+            <Link href={`/search/${qsearch}`} className="">
             <button type="submit" className="md:hidden mr-5 text-3xl" onClick={handleClickSearchBar}><FaSearch /></button>
-            <button className="mr-5 text-3xl"><FaSearch /></button>
+            <button className="hidden md:block mr-5 text-3xl text-red-900"><FaSearch /></button>
             </Link>
         </form>
         {isSearchBar && 
         <>
-        <form className="w-full h-16 border flex items-center justify-between absolute z-20 bg-white top-0" onSubmit={(event)=>handleClickSubmit(event)}>
+        {/* Mobile */}
+        <form className="w-full md:hidden h-16 border flex items-center justify-between absolute z-20 bg-white top-0" onSubmit={(event)=>handleClickSubmit(event)}>
             <input type={'text'} id={'search'} name={"search"} className="border w-full mx-5 h-8 rounded-md outline-none px-2 focus:border focus:border-blue-800" onChange={(event)=>handleChangeSearch(event)} />
-            <button className="mr-5 text-3xl"><FaSearch /></button>
+            <Link href={`${qsearch !== null ? `/search/${qsearch}` : '/'}`}>
+            <button className="mr-5 text-3xl text-yellow-600"><FaSearch /></button>
+            </Link>
         </form>
-        <button className="absolute top-0 w-full h-full bg-black bg-opacity-60 z-10 " onClick={handleClickSearchBar}></button>
+        <button className="md:hidden absolute top-0 w-full h-full bg-black bg-opacity-60 z-10 cursor-default" onClick={handleClickSearchBar}></button>
         </>
         }
         </>

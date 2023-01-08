@@ -1,18 +1,16 @@
 import Head from 'next/head'
-import Sidebar from '../components/sidebar'
-import Navbar from '../components/navbar'
+import {Sidebar, sidebarValue} from '../components/sidebar'
+// import Navbar from '../components/navbar'
 import VideoCard from '../components/videocard'
 import { sidebar } from '../lib/constant'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { fetchSuggestedVideos, fetchSearch } from '../lib/youtubeclone'
 
-export default function Home( ) {
+export default function Home(  ) {
   const [getVideos, setGetVideos] = useState([])
-  const [getMenu, setGetMenu] = useState('')
-  const [qsearch, setQSearch] = useState('')
+  const [getMenu, setGetMenu] = useState(null)
   const [sidebarMenu, setSidebarMenu] = useState(sidebar)
-
+  
   useEffect(()=>{
     fetchSuggestedVideos()
     .then(data=>setGetVideos(data.items))
@@ -37,13 +35,13 @@ export default function Home( ) {
     })
   }
   
-  // const handleChangeSearch = (event) => {
-  //   setQSearch(event.target.value)
-  // }
+  const handleChangeSearch = (event) => {
+    setQSearch(event.target.value)
+  }
 
-  // const handleClickSubmit = (event) => {
-  //   event.preventDefault();
-  // }
+  const handleClickSubmit = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <>
@@ -53,17 +51,16 @@ export default function Home( ) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/icon/yt-icon.png" />
       </Head>
-      <Navbar 
-      // handleChangeSearch={handleChangeSearch}
-      // handleClickSubmit={handleClickSubmit}
-      // qsearch={qsearch} 
-      />
+      {/* <Navbar /> */}
       <div className='md:flex md:mx-5'>
         <Sidebar 
         handleClickSidebarMenu={handleClickSidebarMenu}
         sidebarMenu={sidebarMenu} />
-        <main className='md:border-l flex flex-col md:flex-none md:grid md:grid-cols-5 md:gap-2 md:max-w-[100rem] md:mx-auto px-2'>
+        <main className='md:border-l px-5 py-16 md:py-3 '>
+        <span className='font-bold text-2xl border-b-4 border-red-600 pb-1'>{getMenu === null ? 'Home' : getMenu}</span>
+        <div className='flex flex-col md:flex-none md:grid md:grid-cols-5 md:gap-2 md:max-w-[100rem] md:mx-auto my-5'>
           <VideoCard videos={getVideos} />
+        </div>
         </main>
       </div>
     </>
