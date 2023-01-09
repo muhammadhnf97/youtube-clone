@@ -12,7 +12,7 @@ export default function Home(  ) {
   const [sidebarMenu, setSidebarMenu] = useState(sidebar)
   
   useEffect(()=>{
-    fetchSuggestedVideos()
+    fetchSearch('gaming')
     .then(data=>setGetVideos(data.items))
   },[])
 
@@ -21,7 +21,7 @@ export default function Home(  ) {
       fetchSearch(getMenu)
       .then(data=>setGetVideos(data.items))
     } else {
-      fetchSuggestedVideos()
+      fetchSearch()
       .then(data=>setGetVideos(data.items))
     }
   },[getMenu])
