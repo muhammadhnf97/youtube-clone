@@ -5,7 +5,7 @@ export default function VideoCard ( {videos} ) {
         <>
         {videos?.map(data=>{
             return (
-                <a href={`/video/${data?.id?.videoId}`}>
+                <a href={`/video/${data?.id?.videoId}`} key={data.id.videoId}>
                     <div className="w-full my-2 flex flex-col relative mx-auto hover:bg-black hover:bg-opacity-10 p-1 rounded-lg duration-300">
                         <div className="relative">
                             <div className="w-full md:w-72 h-60 md:h-48 overflow-hidden relative md:rounded-lg mx-auto">

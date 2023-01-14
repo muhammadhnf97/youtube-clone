@@ -17,7 +17,7 @@ export default function Search (){
 
     return (
         <>
-        <main className="flex flex-col md:grid md:grid-cols-5 md:max-w-[95rem] md:gap-2">
+        <main className="flex flex-col md:grid md:grid-cols-5 md:max-w-[95rem] md:gap-2 md:mx-auto">
             <VideoCard videos={getVideos} />
         </main>
         </>
