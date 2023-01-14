@@ -14,7 +14,7 @@ export default function Layout({ children }) {
     <Navbar />
     <div className='flex'>
     <Sidebar />
-    <div className='mx-auto '>{children}</div>
+    <div className='mx-auto w-full md:px-5'>{children}</div>
     </div>
     </>
   )

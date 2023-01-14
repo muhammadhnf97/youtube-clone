@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { fetchSearch } from "../../lib/youtubeclone" 
-import Navbar from "../../components/navbar"
 import VideoCard from "../../components/videocard"
 
 export default function Search (){

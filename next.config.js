@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'yt3.ggpht.com',
         port: ''
       },
+      {
+        protocol: 'https',
+        hostname: 'yt3.googleusercontent.com',
+        port: ''
+      },
     ],
   },
 }

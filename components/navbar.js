@@ -35,7 +35,7 @@ export default function Navbar (  ) {
 
     return (
         <>
-        <form className="sticky top-0 w-full h-16 border-b flex items-center justify-between px-5 z-10 bg-white" onSubmit={(event)=>handleClickSubmit(event)}>
+        <div className="sticky top-0 w-full h-16 border-b flex items-center justify-between px-5 z-10 bg-white">
           <div className="flex w-fit gap-3">  
             <button className="text-3xl" onClick={handleClickSideBar}><FiMenu /></button>
             <a href="/">
@@ -44,11 +44,13 @@ export default function Navbar (  ) {
               </div>
             </a>
           </div>
-          <input type={'text'} id={'search'} name={"search"} className="block md:block border w-[40rem] md:w- mx-5 h-8 rounded-md outline-none px-2 focus:border focus:border-blue-800" onChange={(event)=>handleChangeSearch(event)} />
-          <Link href={`/search/${qsearch}`}>
-          <button className="text-3xl  pt-2"><FaSearch /></button>
-          </Link>
-        </form>
+          <form className="flex items-center justify-between" onSubmit={(event)=>handleClickSubmit(event)}>
+            <input type={'text'} id={'search'} name={"search"} value={qsearch} className="block md:block border w-full md:w-[40rem] mx-5 h-8 rounded-md outline-none px-2 focus:border focus:border-blue-800" onChange={(event)=>handleChangeSearch(event)} />
+            <Link href={`/search/${qsearch}`}>
+            <button className="text-3xl  pt-2"><FaSearch /></button>
+            </Link>
+          </form >
+        </div>
         <button className={`w-full h-full fixed bg-black z-10 top-0 bg-opacity-70 ${!isSidebar ? "hidden" : "block"}`} onClick={handleClickSideBar}></button>
         <div className={`fixed w-1/3 md:w-1/6 h-full bg-white top-0 z-20 px-2 py-5 leading-10 ${!isSidebar ? "hidden" : "block"}`}>
           <h2 className="font-bold text-lg mb-3">Categories</h2>

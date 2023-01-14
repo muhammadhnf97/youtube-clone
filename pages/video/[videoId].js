@@ -51,14 +51,14 @@ export default function Videos () {
     console.log(suggestedVideos)
 
     return (
-        <main className="py-2 md:mx-20">
-            <div className="flex">
+        <main className="py-2">
+            <div className="flex w-full">
                 <div className="w-full h-60 md:w-[1280px] md:h-[720px] mx-auto md:mx-0">
                 {id && <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} width='100%' height='100%' />}
                 </div>
                 <div className="hidden md:block mx-auto w-[480px] p-5 h-full">
                     <span className="text-lg font-semibold">Recommendation</span>
-                    <div className="w-full h-[650px] overflow-scroll border py-1 px-2 rounded-lg my-3">
+                    <div className="w-full h-[650px] overflow-scroll py-1 px-2 rounded-lg my-3">
                         <SuggestedCard suggestedVideos={suggestedVideos} />
                     </div>
                 </div>

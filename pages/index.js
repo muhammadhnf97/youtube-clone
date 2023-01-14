@@ -1,7 +1,4 @@
-import Head from 'next/head'
-import Navbar from '../components/navbar'
 import VideoCard from '../components/videocard'
-import { sidebar } from '../lib/constant'
 import { useEffect, useState } from 'react'
 import { fetchSearch } from '../lib/youtubeclone'
 
@@ -16,7 +13,7 @@ export default function Home(  ) {
 
   return (
     <>
-    <main className="flex flex-col md:grid md:grid-cols-5 md:max-w-[95rem] md:gap-2">
+    <main className="flex flex-col md:grid md:grid-cols-5 md:max-w-[95rem] md:gap-2 md:mx-auto">
         <VideoCard videos={getVideos} />
     </main>
     </>
