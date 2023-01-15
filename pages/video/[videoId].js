@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import ReactPlayer from "react-player"
 import Image from "next/image"
-import { fetchVideoDetail, fetchSuggestedVideos, fetchChannelDetails, fetchVideoComments } from "../../lib/youtubeclone"
+import { fetchVideoDetail, fetchSuggestedVideos, fetchChannelDetails, fetchVideoComments } from "../../lib/server"
 import SuggestedCard from "../../components/suggestedcard"
 
 export default function Videos () {
@@ -116,10 +116,11 @@ export default function Videos () {
                                     <button className="font-semibold text-sm pl-3">Comments</button>
                                 </div>
                             </div>
+                            
                         )
                     })}
                 </div>
-
+ 
             </div>
         </main>
     )

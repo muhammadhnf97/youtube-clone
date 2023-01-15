@@ -1,6 +1,6 @@
 import VideoCard from '../components/videocard'
 import { useEffect, useState } from 'react'
-import { fetchSearch } from '../lib/youtubeclone'
+import { fetchSearch } from '../lib/server'
 
 export default function Home(  ) {
   const [getVideos, setGetVideos] = useState([])

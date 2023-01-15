@@ -1,11 +1,9 @@
 import { useRouter } from "next/router"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { fetchChannelDetails, fetchChannelVideos } from "../../lib/youtubeclone"
+import { fetchChannelDetails, fetchChannelVideos } from "../../lib/server"
 import VideoCard from "../../components/videocard"
 import SuggestedCard from "../../components/suggestedcard"
-import { data } from "autoprefixer"
-
 export default function ChannelDetail () {
     const [channelDetail, setChannelDetail] = useState(null)
     const [channelVideos, setChannelVideos] = useState(null)

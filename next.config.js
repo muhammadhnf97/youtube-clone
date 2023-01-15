@@ -17,9 +17,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'yt3.googleusercontent.com',
         port: ''
-      },
+      }
     ],
   },
 }
 
+require('dotenv').config();
 module.exports = nextConfig
