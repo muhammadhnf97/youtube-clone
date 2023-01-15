@@ -41,7 +41,7 @@ export default function ChannelDetail () {
                     <div key={data.id}>
                         <section className="w-full h-fit relative">
                         <div className="w-full h-32 md:h-72 relative">
-                        <Image src={data.brandingSettings.image.bannerExternalUrl} alt="banner" fill className="object-cover"/>
+                        <Image src={data.brandingSettings?.image?.bannerExternalUrl} alt="banner" fill className="object-cover"/>
                         </div>
                         <div className="absolute w-28 h-28 rounded-full top-[75px] md:top-[230px] transform right-1/2 translate-x-1/2 overflow-hidden">
                             <Image src={data.snippet.thumbnails.medium.url} alt="thumbnails" fill classname="object-cover" />
