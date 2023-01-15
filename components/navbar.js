@@ -38,11 +38,11 @@ export default function Navbar (  ) {
         <div className="sticky top-0 w-full h-16 border-b flex items-center justify-between px-5 z-10 bg-white">
           <div className="flex w-fit gap-3">  
             <button className="text-3xl" onClick={handleClickSideBar}><FiMenu /></button>
-            <a href="/">
+            <Link href="/">
               <div className="w-10 h-10 overflow-hidden object-cover relative">
                   <Image src={'/images/icon/yt-icon.png'} alt="yt-icon" fill />
               </div>
-            </a>
+            </Link>
           </div>
           <form className="flex items-center justify-between" onSubmit={(event)=>handleClickSubmit(event)}>
             <input type={'text'} id={'search'} name={"search"} value={qsearch} className="block md:block border w-full md:w-[40rem] mx-5 h-8 rounded-md outline-none px-2 focus:border focus:border-blue-800" onChange={(event)=>handleChangeSearch(event)} />
