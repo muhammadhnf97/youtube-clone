@@ -31,8 +31,6 @@ export default function Navbar (  ) {
     event.preventDefault();
   }
 
-  console.log(isSidebar)
-
     return (
         <>
         <div className="sticky top-0 w-full h-16 border-b flex items-center justify-between px-5 z-10 bg-white">

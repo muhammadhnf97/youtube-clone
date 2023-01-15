@@ -47,8 +47,6 @@ export default function Videos () {
     const handleClickShowMore = () => {
         setShowMore(prev=>!prev)
     }
-    
-    console.log(suggestedVideos)
 
     return (
         <main className="py-2">
